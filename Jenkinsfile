@@ -2,7 +2,7 @@
 
 pipeline {
   agent {
-    docker {
+    dockerContainer {
       image 'docker:27-cli'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
