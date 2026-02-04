@@ -1,0 +1,55 @@
+@Library('my-shared-lib') _
+
+pipeline {
+  agent any
+  
+  stages {
+    stage('Compile') {
+      steps {
+        script {
+          javaProject.compileStep()
+        }
+      }
+    }
+    
+    stage('Package') {
+      steps {
+        script {
+          javaProject.packageStep()
+        }
+      }
+    }
+    
+    stage('Sonar') {
+      steps {
+        script {
+          javaProject.sonarStep()
+        }
+      }
+    }
+    
+    stage('Unit Tests') {
+      steps {
+        script {
+          javaProject.unitTestStep()
+        }
+      }
+    }
+    
+    stage('Publish') {
+      steps {
+        script {
+          javaProject.publishStep()
+        }
+      }
+    }
+    
+    stage('Notify') {
+      steps {
+        script {
+          javaProject.notifyStep()
+        }
+      }
+    }
+  }
+}

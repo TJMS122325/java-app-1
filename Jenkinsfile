@@ -1,5 +1,15 @@
 @Library('my-shared-lib') _
+
 pipeline {
   agent any
-  javaProject()
+  
+  stages {
+    stage('Run Java Pipeline') {
+      steps {
+        script {
+          javaProject()
+        }
+      }
+    }
+  }
 }
